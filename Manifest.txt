@@ -1,0 +1,14 @@
+History.txt
+Manifest.txt
+README.rdoc
+Rakefile
+lib/figure_set.rb
+ext/extconf.rb
+ext/figure_set.h
+ext/methods.c
+ext/init.c
+ext/index.c
+ext/and.c
+ext/or.c
+ext/array.c
+ext/sample.c

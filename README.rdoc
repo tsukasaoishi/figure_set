@@ -1,0 +1,61 @@
+= FigureSet
+
+= Description
+ FigureSet is the library which treats set operation.
+ FigureSet is able to treat the set of 32bit integer.(0 .. 2 ** 32 -1)
+
+= How to
+
+== Initialize
+=== an empty set.
+  empty_set = FigureSet.new
+
+=== give array.
+  set = FigureSet.new([0,3,6,7])
+
+== Element operation
+=== add to set.
+  set = FigureSet.new
+  set.add 10
+  set << 100
+  set.to_a #=> [10, 100]
+
+=== remove from set.
+  set = FigureSet.new([1,4,5])
+  set.delete(4)
+  set.to_a #=> [1, 5]
+
+== Set operation
+=== and
+  set1 = FigureSet.new([1,2,3,5])
+  set2 = FigureSet.new([2,4,6])
+  set_and = set1 & set2
+  set_and.to_a #=> [2]
+
+=== or
+  set1 = FigureSet.new([1,2,3,5])
+  set2 = FigureSet.new([2,4,6])
+  set_or = set1 | set2
+  set_or.to_a #=> [1,2,3,4,5,6]
+
+== Other
+=== size
+  set = FigureSet.new([1,2,3])
+  set.size #=> 3
+
+=== empty?
+  set = FigureSet.new
+  set.empty? #=> true
+ 
+=== clear
+  set = FigureSet.new([1,2,3])
+  set.clear
+  set.to_a #=> []
+
+= INSTALL:
+
+sudo gem install figure_set
+
+= LICENSE:
+
+  FigureSet is released under the MIT license.
