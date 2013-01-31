@@ -169,7 +169,7 @@ static VALUE t_sample(int argc, VALUE *argv, VALUE self)
     array = rb_ary_new2(sample_count);
     if (sample_count == root->size) {
         to_array(root, array);
-    } else {
+    } else if (root->size) {
         sample(root, array, sample_count);
     }
 
