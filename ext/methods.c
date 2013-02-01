@@ -242,4 +242,7 @@ void Init_figure_set(void) {
     rb_define_alias(rb_cFigureSet, "&", "intersection");
     rb_define_alias(rb_cFigureSet, "|", "union");
     rb_define_alias(rb_cFigureSet, "length", "size");
+
+    // for sample method
+    srand((unsigned) time(NULL));
 }

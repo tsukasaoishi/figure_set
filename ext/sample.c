@@ -16,8 +16,6 @@ void sample(root_node root, VALUE array, unsigned long sample_count)
 {
     unsigned int start_sample, sample_now, i, count, target_point;
 
-    srand((unsigned) time(NULL));
-
     start_sample = RARRAY_LEN(array);
 
     for(sample_now = start_sample; sample_now < sample_count; sample_now++) {
