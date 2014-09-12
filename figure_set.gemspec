@@ -1,53 +1,25 @@
-# -*- encoding: utf-8 -*-
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'figure_set/version'
 
-Gem::Specification.new do |s|
-  s.name = %q{figure_set}
-  s.version = "0.0.2"
+Gem::Specification.new do |spec|
+  spec.name          = "figure_set"
+  spec.version       = FigureSet::VERSION
+  spec.authors       = ["Tsukasa OISHI"]
+  spec.email         = ["tsukasa.oishi@gmail.com"]
+  spec.summary       = %q{FigureSet is the library which treats set operation.}
+  spec.description   = %q{FigureSet is the library which treats set operation.}
+  spec.homepage      = "https://github.com/tsukasaoishi/figure_set"
+  spec.license       = "MIT"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Tsukasa OISHI"]
-  s.date = %q{2012-11-26}
-  s.description = %q{FigureSet.}
-  s.email = ["tsukasa.oishi@gmail.com"]
-  s.extensions = ["ext/extconf.rb"]
-  s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.rdoc"]
-  s.files = %w|
-    History.txt
-    Manifest.txt
-    README.rdoc
-    Rakefile
-    lib/figure_set.rb
-    ext/extconf.rb
-    ext/figure_set.h
-    ext/methods.c
-    ext/init.c
-    ext/index.c
-    ext/and.c
-    ext/or.c
-    ext/array.c
-    ext/sample.c
-  |
-  s.has_rdoc = false
-  s.homepage = %q{http://www.kaeruspoon.net/}
-  s.rdoc_options = ["--main", "README.rdoc"]
-  s.require_paths = ["lib", "ext"]
-  s.rubyforge_project = %q{figure_set}
-  s.rubygems_version = %q{1.3.1}
-  s.summary = %q{FigureSet.}
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib", "ext"]
+  spec.extensions    = ["ext/figure_set/extconf.rb"]
 
-  if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 2
-
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<newgem>, [">= 1.2.3"])
-      s.add_development_dependency(%q<hoe>, [">= 1.8.0"])
-    else
-      s.add_dependency(%q<newgem>, [">= 1.2.3"])
-      s.add_dependency(%q<hoe>, [">= 1.8.0"])
-    end
-  else
-    s.add_dependency(%q<newgem>, [">= 1.2.3"])
-    s.add_dependency(%q<hoe>, [">= 1.8.0"])
-  end
+  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake-compiler", '~> 0.9'
 end

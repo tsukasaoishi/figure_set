@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ruby.h>
+#include <time.h>
 #include "figure_set.h"
 
 //-----------------------------------------------------------
@@ -71,8 +72,8 @@ static VALUE t_add(VALUE self, VALUE value)
 {
     root_node root;
 
-    if (TYPE(value) != T_FIXNUM) return;
-    if (VALID_MIN_VALUE > value || VALID_MAX_VALUE < value) return;
+    if (TYPE(value) != T_FIXNUM) return self;
+    if (VALID_MIN_VALUE > value || VALID_MAX_VALUE < value) return self;
 
     Data_Get_Struct(self, struct _root_node, root);
     add_num(root, NUM2ULONG(value));
@@ -87,8 +88,8 @@ static VALUE t_delete(VALUE self, VALUE value)
 {
     root_node root;
 
-    if (TYPE(value) != T_FIXNUM) return;
-    if (VALID_MIN_VALUE > value || VALID_MAX_VALUE < value) return;
+    if (TYPE(value) != T_FIXNUM) return self;
+    if (VALID_MIN_VALUE > value || VALID_MAX_VALUE < value) return self;
 
     Data_Get_Struct(self, struct _root_node, root);
     delete_num(root, NUM2ULONG(value));

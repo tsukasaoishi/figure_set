@@ -1,28 +1,14 @@
-%w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
-require File.dirname(__FILE__) + '/lib/figure_set'
+require "bundler/gem_tasks"
+require "rake/extensiontask"
+require 'rake/testtask'
 
-# Generate all the Rake tasks
-# Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new('figure_set', FigureSet.version) do |p|
-  p.developer('Tsukasa OISHI', 'tsukasa.oishi@gmail.com')
-  p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  p.rubyforge_name       = p.name # TODO this is default value
-  p.extra_dev_deps = [
-    ['newgem', ">= #{::Newgem::VERSION}"]
-  ]
-
-  pec_extras = {
-    :extensions => ['ext/extconf.rb'],
-  }
-
-  p.clean_globs |= %w[**/.DS_Store tmp *.log]
-  path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
-  p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'rdoc')
-  p.rsync_args = '-av --delete --ignore-errors'
+# compile
+gemspec = eval(File.read(File.expand_path('../figure_set.gemspec', __FILE__)))
+Rake::ExtensionTask.new("figure_set", gemspec) do |ext|
+  ext.lib_dir = "lib/figure_set"
 end
 
-require 'newgem/tasks' # load /tasks/*.rake
-Dir['tasks/**/*.rake'].each { |t| load t }
-
-# TODO - want other tests/tasks run by default? Add them to the list
-# task :default => [:spec, :features]
+# test
+Rake::TestTask.new do |t|
+  t.test_files = FileList['test/**/test_*.rb']
+end

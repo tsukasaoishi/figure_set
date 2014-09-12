@@ -1,4 +1,4 @@
-require File.expand_path(File.join(File.dirname(__FILE__), "test_figure_set_base"))
+require File.expand_path(File.join(File.dirname(__FILE__), "prepare"))
 
 class TestFigureSetCopy < Test::Unit::TestCase
   include TestFigureSetBase

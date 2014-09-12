@@ -1,11 +1,2 @@
-require 'figure_set.so'
-
-class FigureSet
-  VERSION = "0.0.2"
-
-  class << self
-    def version
-      VERSION
-    end
-  end 
-end
+require 'figure_set/figure_set'
+require 'figure_set/version'
