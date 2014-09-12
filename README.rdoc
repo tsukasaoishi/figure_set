@@ -1,5 +1,7 @@
 = FigureSet
 
+{<img src="https://badge.fury.io/rb/figure_set.svg" alt="Gem Version" />}[http://badge.fury.io/rb/figure_set] {<img src="https://travis-ci.org/tsukasaoishi/figure_set.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/tsukasaoishi/figure_set] {<img src="https://codeclimate.com/github/tsukasaoishi/figure_set/badges/gpa.svg" />}[https://codeclimate.com/github/tsukasaoishi/figure_set]
+
 = Description
 FigureSet is the library which treats set operation.
 FigureSet is able to treat the set of 32bit integer.(0 .. 2 ** 32 -1)
