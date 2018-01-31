@@ -1,5 +1,5 @@
 class FigureSet
-  VERSION = "0.0.4"
+  VERSION = "1.0.0"
 
   class << self
     def version
