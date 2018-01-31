@@ -9,10 +9,10 @@ module TestFigureSetBase
   private
 
   def node_border_values
-    return @_node_border_values if @_node_border_values
+    return @_node_border_values if defined?(@_node_border_values)
 
     all_num = []
-    0.step(2 ** 32 -1, (64 * (16 ** 5))) do |i|
+    0.step((2 ** 32) - 1, (64 * (16 ** 5))) do |i|
       offset = i / 64
       (1..15).each do |n|
         leaf_wide = [(offset + n * 64), ((offset + (n + 1) * 64) - 1)]
