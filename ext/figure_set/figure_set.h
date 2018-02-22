@@ -7,18 +7,6 @@
 
 #include <math.h>
 
-#ifndef RUBY_19
-#ifndef RFLOAT_VALUE
-#define RFLOAT_VALUE(v) (RFLOAT(v)->value)
-#endif
-#ifndef RARRAY_LEN
-#define RARRAY_LEN(v) (RARRAY(v)->len)
-#endif
-#ifndef RARRAY_PTR
-#define RARRAY_PTR(v) (RARRAY(v)->ptr)
-#endif
-#endif
-
 // max children size of branch
 #define MAX_CHILDREN_SIZE_OF_BRANCH (unsigned long)16
 #define LAST_BRANCH_LEVEL (unsigned long)6
@@ -68,7 +56,7 @@ typedef struct _branch_node {
 } *branch_node;
 
 typedef struct _root_node {
-    unsigned char children_size;     
+    unsigned char children_size;
     unsigned long size;              // number of elements in set
     void *index[MAX_CHILDREN_SIZE_OF_ROOT_NODE];    // children pointer
 } *root_node;
@@ -142,4 +130,3 @@ static VALUE t_size(VALUE);
 static VALUE t_empty(VALUE);
 static VALUE t_clear(VALUE);
 void Init_figure_set(void);
-

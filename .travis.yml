@@ -2,14 +2,15 @@ language: ruby
 before_install:
   - gem install bundler
 before_script:
-  - bundle update
-  - "bundle exec rake compile"
+  - "bin/setup"
 script:
-  - "bundle exec rake test"
+  - "bin/test"
 cache: bundler
 rvm:
   - 2.2.9
   - 2.3.6
   - 2.4.3
   - 2.5.0
+matrix:
+  fast_finish: true
 bundler_args: --jobs 3 --retry 3
