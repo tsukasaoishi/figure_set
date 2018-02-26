@@ -13,10 +13,13 @@
 // Ruby Methods
 // ----------------------------------------------------------
 
+static VALUE rb_cFigureSet;
+
 /**
  * allocate
 **/
-static VALUE t_allocate(VALUE klass)
+static VALUE
+t_allocate(VALUE klass)
 {
     VALUE obj;
     root_node root;
@@ -30,7 +33,8 @@ static VALUE t_allocate(VALUE klass)
 /**
  * initialize
 **/
-static VALUE t_initialize(int argc, VALUE *argv, VALUE self)
+static VALUE
+t_initialize(int argc, VALUE *argv, VALUE self)
 {
     VALUE ary_element;
     root_node root;
@@ -54,7 +58,8 @@ static VALUE t_initialize(int argc, VALUE *argv, VALUE self)
 /**
  * initialize_copy
 **/
-static VALUE t_initialize_copy(VALUE self, VALUE orig)
+static VALUE
+t_initialize_copy(VALUE self, VALUE orig)
 {
     root_node root, orig_set;
 
@@ -68,7 +73,8 @@ static VALUE t_initialize_copy(VALUE self, VALUE orig)
 /**
  * add
 **/
-static VALUE t_add(VALUE self, VALUE value)
+static VALUE
+t_add(VALUE self, VALUE value)
 {
     root_node root;
 
@@ -84,7 +90,8 @@ static VALUE t_add(VALUE self, VALUE value)
 /**
  * delete
  **/
-static VALUE t_delete(VALUE self, VALUE value)
+static VALUE
+t_delete(VALUE self, VALUE value)
 {
     root_node root;
 
@@ -100,7 +107,8 @@ static VALUE t_delete(VALUE self, VALUE value)
 /**
  * intersection
 **/
-static VALUE t_intersection(VALUE self, VALUE other)
+static VALUE
+t_intersection(VALUE self, VALUE other)
 {
     VALUE obj;
     root_node result_set, set0, set1;
@@ -119,7 +127,8 @@ static VALUE t_intersection(VALUE self, VALUE other)
 /**
  * union
 **/
-static VALUE t_union(VALUE self, VALUE other)
+static VALUE
+t_union(VALUE self, VALUE other)
 {
     VALUE obj;
     root_node result_set, set0, set1;
@@ -138,7 +147,8 @@ static VALUE t_union(VALUE self, VALUE other)
 /**
  * to_a
 **/ 
-static VALUE t_to_a(VALUE self)
+static VALUE
+t_to_a(VALUE self)
 {
     root_node root;
     VALUE array;
@@ -154,7 +164,8 @@ static VALUE t_to_a(VALUE self)
 /**
  * sample
 **/ 
-static VALUE t_sample(int argc, VALUE *argv, VALUE self)
+static VALUE
+t_sample(int argc, VALUE *argv, VALUE self)
 {
     root_node root;
     VALUE array;
@@ -180,7 +191,8 @@ static VALUE t_sample(int argc, VALUE *argv, VALUE self)
 /**
  * size
 **/
-static VALUE t_size(VALUE self)
+static VALUE
+t_size(VALUE self)
 {
     root_node root;
 
@@ -192,7 +204,8 @@ static VALUE t_size(VALUE self)
 /**
  * empty?
 **/
-static VALUE t_empty(VALUE self)
+static VALUE
+t_empty(VALUE self)
 {
     root_node root;
 
@@ -208,7 +221,8 @@ static VALUE t_empty(VALUE self)
 /**
  * cler
 **/
-static VALUE t_clear(VALUE self)
+static VALUE
+t_clear(VALUE self)
 {
     root_node root;
 
@@ -225,7 +239,8 @@ static VALUE t_clear(VALUE self)
 /**
  * define class
 **/
-void Init_figure_set(void) {
+void
+Init_figure_set(void) {
     rb_cFigureSet = rb_define_class("FigureSet", rb_cObject);
     rb_define_alloc_func(rb_cFigureSet, t_allocate);
     rb_define_private_method(rb_cFigureSet, "initialize", t_initialize, -1);

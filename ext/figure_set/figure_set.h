@@ -31,9 +31,6 @@ static unsigned long OFFSET_SCALE[] = {0x20000000, 0x2000000, 0x200000, 0x20000,
 #define VALID_MIN_VALUE UINT2NUM(0)
 #define VALID_MAX_VALUE UINT2NUM(0xffffffff)
 
-// FigureSet class object
-static VALUE rb_cFigureSet;
-
 // leaf node
 // example:
 //   data = 5  # (bit is 0...0101) exist bit numbers is (2, 0) 
@@ -61,60 +58,39 @@ typedef struct _root_node {
     void *index[MAX_CHILDREN_SIZE_OF_ROOT_NODE];    // children pointer
 } *root_node;
 
-// initialize
-void init_root_node(root_node);
-void *init_branch_node();
-void *init_leaf_node(unsigned long);
-
-// init_copy
-void copy_root_node(root_node, root_node);
-void copy_branch_node(root_node, branch_node, branch_node);
-void *init_and_copy_brance_node(root_node, branch_node);
-void *init_and_copy_leaf_node(root_node, leaf_node);
-
-// insert element into set
-void add_num(root_node, unsigned long);
-unsigned int search_and_insert(branch_node, unsigned long, unsigned long, unsigned long);
-unsigned int search_and_insert_at_leaf(leaf_node, unsigned long);
-
-// remove element from set
-void delete_num(root_node, unsigned long);
-unsigned int search_and_remove(branch_node, unsigned long, unsigned long, unsigned long);
-unsigned int search_and_remove_at_leaf(leaf_node, unsigned long);
-
-// output Array object from internal set
-void to_array(root_node, VALUE);
-void search_and_get_array(branch_node, VALUE);
-void search_and_get_array_at_leaf(leaf_node, VALUE);
-
-// join
-void join(root_node, root_node, root_node);
-void middle_join_branch_node(root_node, branch_node, branch_node, branch_node);
-void last_join_branch_node(root_node, branch_node, branch_node, branch_node);
-void *init_and_join_brance_node(root_node, branch_node, branch_node);
-void *init_and_join_leaf_node(root_node, leaf_node, leaf_node);
-
-// intersection
-void intersection(root_node, root_node, root_node);
-void middel_intersection_branch_node(root_node, branch_node, branch_node, branch_node);
-void last_intersection_branch_node(root_node, branch_node, branch_node, branch_node);
-void *init_and_intersection_leaf_node(root_node, leaf_node, leaf_node);
-void *init_and_intersection_branch_node(root_node, branch_node, branch_node);
+// bit count
 unsigned long bit32_count(unsigned long);
 unsigned long bit64_count(unsigned long);
 
-// sample
-void sample(root_node, VALUE, unsigned long);
-void search_and_sample_array(branch_node, VALUE);
-void search_and_sample_array_at_leaf(leaf_node, VALUE);
+// initialize
+void init_root_node(root_node);
+branch_node init_branch_node();
+leaf_node init_leaf_node(unsigned long);
+
+// init_copy
+void copy_root_node(root_node, root_node);
+branch_node init_and_copy_brance_node(root_node, branch_node);
+leaf_node init_and_copy_leaf_node(root_node, leaf_node);
 
 // memory free
 void destroy_all(root_node);
 void destroy_all_branches(root_node);
 void destroy_branch(branch_node);
 
-//-----------------------------------------------------------
-// Ruby Methods
-// ----------------------------------------------------------
+// insert element into set
+void add_num(root_node, unsigned long);
 
-void Init_figure_set(void);
+// remove element from set
+void delete_num(root_node, unsigned long);
+
+// output Array object from internal set
+void to_array(root_node, VALUE);
+
+// join
+void join(root_node, root_node, root_node);
+
+// intersection
+void intersection(root_node, root_node, root_node);
+
+// sample
+void sample(root_node, VALUE, unsigned long);
