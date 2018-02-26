@@ -32,7 +32,7 @@ static VALUE t_allocate(VALUE klass)
 **/
 static VALUE t_initialize(int argc, VALUE *argv, VALUE self)
 {
-    VALUE num, ary_element;
+    VALUE ary_element;
     root_node root;
     unsigned long i, len;
 

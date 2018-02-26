@@ -16,7 +16,7 @@ void sample(root_node root, VALUE array, unsigned long sample_count)
 {
     unsigned int start_sample, sample_now, i, count, target_point;
 
-    start_sample = RARRAY_LEN(array);
+    start_sample = (unsigned int)RARRAY_LEN(array);
 
     for(sample_now = start_sample; sample_now < sample_count; sample_now++) {
         target_point = rand() % root->children_size;
@@ -30,12 +30,12 @@ void sample(root_node root, VALUE array, unsigned long sample_count)
         }
     }
 
-    if (RARRAY_LEN(array) < sample_count) {
+    if ((unsigned int)RARRAY_LEN(array) < sample_count) {
         sample(root, array, sample_count);
     }
 
     rb_funcall(array, rb_intern("uniq!"), 0);
-    if (RARRAY_LEN(array) < sample_count) {
+    if ((unsigned int)RARRAY_LEN(array) < sample_count) {
         sample(root, array, sample_count);
     }
 }

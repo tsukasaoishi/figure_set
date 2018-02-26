@@ -117,16 +117,4 @@ void destroy_branch(branch_node);
 // Ruby Methods
 // ----------------------------------------------------------
 
-static VALUE t_allocate(VALUE);
-static VALUE t_initialize(int, VALUE *, VALUE);
-static VALUE t_initialize_copy(VALUE, VALUE);
-static VALUE t_add(VALUE, VALUE);
-static VALUE t_delete(VALUE, VALUE);
-static VALUE t_intersection(VALUE, VALUE);
-static VALUE t_union(VALUE, VALUE);
-static VALUE t_to_a(VALUE);
-static VALUE t_sample(int, VALUE *, VALUE);
-static VALUE t_size(VALUE);
-static VALUE t_empty(VALUE);
-static VALUE t_clear(VALUE);
 void Init_figure_set(void);
