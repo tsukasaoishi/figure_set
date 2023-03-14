@@ -13,3 +13,13 @@ end
 Rake::TestTask.new do |t|
   t.test_files = FileList['test/**/test_*.rb']
 end
+
+desc 'generate Manifest.txt'
+task :manifest do |t|
+  File.open(File.expand_path("../Manifest.txt", __FILE__), "w") do |out|
+    gemspec.files.sort.each do |f|
+      out.puts(f) if File.file?(f)
+    end
+  end
+  puts "Generate Manifest.txt"
+end
